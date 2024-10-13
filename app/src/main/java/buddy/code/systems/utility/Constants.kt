@@ -29,7 +29,7 @@ object Constants {
     const val APORTE_FONASA_HIJOS = 1.5
     const val APORTE_FONASA_CONYUGE = 2
 
-    const val APORTE_FRL = 0.1
+    const val APORTE_FRL = 0.001
 
     const val TASA_DEDUCCIONES_HASTA15BPC = 14
     const val TASA_DEDUCCIONES_DESDE15BPC = 8

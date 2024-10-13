@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context=".activities.result.ResultActivity">
+
+
+    <LinearLayout
+        android:id="@+id/ll_hasChildren"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gr=""
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:text="Salario liquido Uruguay"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2024"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_salario_liquido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salario liquido: $ 90123" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalle BPS:" />
+
+        <TextView
+            android:id="@+id/tv_jubilatorio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jubilatorio: 123" />
+
+        <TextView
+            android:id="@+id/tv_fonasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FONASA: 123" />
+
+        <TextView
+            android:id="@+id/tv_frl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FRL: 123" />
+
+        <TextView
+            android:id="@+id/tv_total_bps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total BPS: 123" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detalle IRPF" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Desde"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Hasta"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Tasa"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Impuesto"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="24%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="27%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="115 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="31%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="115 BPC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="36%" />
+
+                    <TextView
+                        android:id="@+id/tv_franja_irpf_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/tv_deducciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deducciones: $ 123" />
+
+            <TextView
+                android:id="@+id/tv_tasa_deducciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tasa Deducciones: 8 % " />
+
+            <TextView
+                android:id="@+id/tv_total_irpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total IRPF: $ 123" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profesionales" />
+
+            <TextView
+                android:id="@+id/tv_fondo_solaridad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fondo Solaridad: $ 0"/>
+
+            <TextView
+                android:id="@+id/tv_aportes_cjppu_notarial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aportes CJPPU /  Caja Notarial: $ 0"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

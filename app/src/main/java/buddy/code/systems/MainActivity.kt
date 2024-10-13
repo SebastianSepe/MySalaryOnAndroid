@@ -22,6 +22,7 @@ import buddy.code.systems.utility.Constants.APORTE_FONASA_ADICIONAL
 import buddy.code.systems.utility.Constants.APORTE_FONASA_BASICO
 import buddy.code.systems.utility.Constants.APORTE_FONASA_CONYUGE
 import buddy.code.systems.utility.Constants.APORTE_FONASA_HIJOS
+import buddy.code.systems.utility.Constants.APORTE_FRL
 import buddy.code.systems.utility.Constants.BPC
 import buddy.code.systems.utility.Constants.DEDUCCION_HIJO_CON_DISCAPACIDAD
 import buddy.code.systems.utility.Constants.DEDUCCION_HIJO_SIN_DISCAPACIDAD
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
     private var mLlDeductionsOption: LinearLayout? = null
     private var mCbDeductions: CheckBox? = null
     private var mLlDeductionsContainer: LinearLayout? = null
+
+    private var mTvResult: TextView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -140,8 +143,8 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-
-                Toast.makeText(this, "BPS: $aportesBPS FONASA: $fonasa FRL: $frl IRPF: ${irpf - deducciones.toInt()}", Toast.LENGTH_LONG).show()
+                mTvResult?.text = "Sueldo Liquido: ${salaryNominal - aportesBPS - fonasa - frl - irpf} \nBPS: $aportesBPS \nFONASA: $fonasa \nFRL: $frl \nIRPF: $irpf \nDeducciones: $deducciones "
+//                Toast.makeText(this, "BPS: $aportesBPS FONASA: $fonasa FRL: $frl IRPF: ${irpf - deducciones.toInt()}", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -166,6 +169,7 @@ class MainActivity : AppCompatActivity() {
         mBCalculate = findViewById(R.id.btn_calculate)
         mCbDeductions = findViewById(R.id.cb_hasDeductions)
         mLlDeductionsContainer = findViewById(R.id.ll_deductions_container)
+        mTvResult = findViewById(R.id.tv_result)
     }
 
     private fun calcularAportesBPS(salarioNominal: Int): Int {
@@ -200,7 +204,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calcularAportesFRL(salarioNominal: Int): Double {
-        return (salarioNominal * 0.1) / 100
+        return (salarioNominal * APORTE_FRL)
     }
 
     private fun calcularAportesIRPF(salarioNominal: Int): Int {
@@ -224,6 +228,7 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+        Log.d(TAG, "Total IRPF: $totalIRPF")
         return totalIRPF.toInt()
     }
 
