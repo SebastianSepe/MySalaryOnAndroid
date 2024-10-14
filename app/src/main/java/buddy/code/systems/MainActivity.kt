@@ -1,5 +1,6 @@
 package buddy.code.systems
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import buddy.code.systems.activities.result.ResultActivity
 import buddy.code.systems.utility.Constants.ADICIONAL_FONDO_SOLIDARIDAD
 import buddy.code.systems.utility.Constants.APORTES_JUBILATORIOS
 import buddy.code.systems.utility.Constants.APORTE_FONASA_ADICIONAL
@@ -49,11 +51,9 @@ class MainActivity : AppCompatActivity() {
     private var mEtMonthlyContributionCJPPUOrNotarialBox: EditText? = null
     private var mEtOtherDeductions: EditText? = null
     private var mBCalculate: Button? = null
-
     private var mLlDeductionsOption: LinearLayout? = null
     private var mCbDeductions: CheckBox? = null
     private var mLlDeductionsContainer: LinearLayout? = null
-
     private var mTvResult: TextView? = null
 
 
@@ -82,12 +82,12 @@ class MainActivity : AppCompatActivity() {
         val adapterDeduction = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, percentageValuesDeduction) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = super.getView(position, convertView, parent)
-                "${getItem(position)}%".also { (view as TextView).text = it } // Mostrar el valor como porcentaje
+                "${getItem(position)}%".also { (view as TextView).text = it }
                 return view
             }
             override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = super.getDropDownView(position, convertView, parent)
-                "${getItem(position)}%".also { (view as TextView).text = it } // Mostrar el valor como porcentaje
+                "${getItem(position)}%".also { (view as TextView).text = it }
                 return view
             }
         }
@@ -118,40 +118,52 @@ class MainActivity : AppCompatActivity() {
 
         mBCalculate?.setOnClickListener {
             val salaryNominal = mEtSalaryNominal?.text.toString().toIntOrNull() ?: 0
+
             if (salaryNominal <= 0) {
                 Toast.makeText(this, "El salario nominal debe ser mayor a 0", Toast.LENGTH_SHORT).show()
-            }else{
-                val hasConyuge = mCbHasConyuje?.isChecked?: false
-                val hasChildren = mCbHasChildren?.isChecked?: false
+            } else {
+                val hasConyuge = mCbHasConyuje?.isChecked ?: false
+                val hasChildren = mCbHasChildren?.isChecked ?: false
                 val aportesBPS = calcularAportesBPS(salaryNominal)
                 val fonasa = calcularAportesFONASA(salaryNominal, hasChildren, hasConyuge)
                 val frl = calcularAportesFRL(salaryNominal)
-                val irpf = calcularAportesIRPF(salaryNominal)
+                val (irpf, irpfPorFranjaArray) = calcularAportesIRPF(salaryNominal)
                 var deducciones = 0.0
-
                 val totalAportes = aportesBPS + fonasa + frl
 
-                val cantidadHijosSinDiscapacidad = mEtQtyChildrenWithoutDisability?.text.toString().toIntOrNull() ?: 0
-                val cantidadHijosConDiscapacidad = mEtQtyChildrenWithDisability?.text.toString().toIntOrNull() ?: 0
-                val aporteMensualCJJPUONotarial = mEtMonthlyContributionCJPPUOrNotarialBox?.text.toString().toIntOrNull() ?: 0
-                val otrasDeducciones = mEtOtherDeductions?.text.toString().toIntOrNull() ?: 0
-                val selectedPositionPercentageDeduction = mSpPercentageDeduction?.selectedItemPosition ?: 0
-                val porcentajeDeducciones = percentageValuesDeduction[selectedPositionPercentageDeduction].toInt()
-
                 if (mCbDeductions?.isChecked == true) {
-                    deducciones = calcularDeducciones(salaryNominal, totalAportes, cantidadHijosSinDiscapacidad, cantidadHijosConDiscapacidad, porcentajeDeducciones, mSpContributionSolidarityFund?.selectedItemPosition ?: 0, mCbAdditionalSolidarityFund?.isChecked ?: false, aporteMensualCJJPUONotarial, otrasDeducciones)
-
+                    deducciones = calcularDeducciones(
+                        salaryNominal, totalAportes,
+                        mEtQtyChildrenWithoutDisability?.text.toString().toIntOrNull() ?: 0,
+                        mEtQtyChildrenWithDisability?.text.toString().toIntOrNull() ?: 0,
+                        percentageValuesDeduction[mSpPercentageDeduction?.selectedItemPosition ?: 0].toInt(),
+                        mSpContributionSolidarityFund?.selectedItemPosition ?: 0,
+                        mCbAdditionalSolidarityFund?.isChecked ?: false,
+                        mEtMonthlyContributionCJPPUOrNotarialBox?.text.toString().toIntOrNull() ?: 0,
+                        mEtOtherDeductions?.text.toString().toIntOrNull() ?: 0
+                    )
                 }
-
-                mTvResult?.text = "Sueldo Liquido: ${salaryNominal - aportesBPS - fonasa - frl - irpf} \nBPS: $aportesBPS \nFONASA: $fonasa \nFRL: $frl \nIRPF: $irpf \nDeducciones: $deducciones "
-//                Toast.makeText(this, "BPS: $aportesBPS FONASA: $fonasa FRL: $frl IRPF: ${irpf - deducciones.toInt()}", Toast.LENGTH_LONG).show()
+                val irpfPorFranja = calcularAportesIRPF(salaryNominal).second
+                goToResultActivity(salaryNominal, aportesBPS, fonasa, frl, irpf, deducciones, irpfPorFranja)
             }
         }
 
 
-
-
     }
+
+    private fun goToResultActivity(salaryNominal: Int, aportesBPS: Int, fonasa: Double, frl: Double, irpf: Int, deducciones: Double, irpfPorFranja: DoubleArray) {
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("SALARY", salaryNominal)
+        intent.putExtra("BPS", aportesBPS)
+        intent.putExtra("FONASA", fonasa.toInt())
+        intent.putExtra("FRL", frl.toInt())
+        intent.putExtra("IRPF", irpf)
+        intent.putExtra("IRPF_FRANJAS", irpfPorFranja)
+        intent.putExtra("DEDUCCIONES", deducciones)
+        Log.d("TAG", "IRPF por franjas enviado: ${irpfPorFranja.joinToString()}")
+        startActivity(intent)
+    }
+
 
 
     private fun initializeViews() {
@@ -207,31 +219,29 @@ class MainActivity : AppCompatActivity() {
         return (salarioNominal * APORTE_FRL)
     }
 
-    private fun calcularAportesIRPF(salarioNominal: Int): Int {
-        val salarioEnPesos = (salarioNominal * 1.06)
+    private fun calcularAportesIRPF(salarioNominal: Int): Pair<Int, DoubleArray> {
+        val salarioEnPesos = salarioNominal * 1.06
         Log.d(TAG, "Salario en pesos: $salarioEnPesos")
+
         var totalIRPF = 0.0
+        val irpfPorFranja = mutableListOf<Double>()
 
         for (franja in IRPF_FRANJAS) {
+            if (salarioEnPesos >= franja.desde * BPC) {
+                // Convierte ambos a Double antes de compararlos
+                val calculoFranja = minOf(
+                    salarioEnPesos,
+                    (franja.hasta * BPC).toDouble()
+                ) - (franja.desde * BPC).toDouble()
 
-            if (salarioEnPesos >= franja.desde && salarioEnPesos > (franja.hasta * BPC)) {
-                val irpf = ((((franja.hasta - franja.desde) * BPC) * franja.tasa / 100))
-                Log.d(TAG, "Franja: $franja, IRPF: $irpf")
+                val irpf = calculoFranja * franja.tasa / 100
+                irpfPorFranja.add(irpf)
                 totalIRPF += irpf
             }
-
-            if (salarioEnPesos >= (franja.desde * BPC) && salarioEnPesos < (franja.hasta * BPC)) {
-                val irpf = (((salarioEnPesos - (franja.desde * BPC)) * franja.tasa / 100))
-                Log.d(TAG, "Franja: $franja, IRPF: $irpf")
-                totalIRPF += irpf
-            }
-
-
         }
-        Log.d(TAG, "Total IRPF: $totalIRPF")
-        return totalIRPF.toInt()
-    }
 
+        return Pair(totalIRPF.toInt(), irpfPorFranja.toDoubleArray())
+    }
 
     private fun calcularDeducciones(
         salarioNominal: Int,
@@ -245,14 +255,7 @@ class MainActivity : AppCompatActivity() {
         otrasDeducciones: Int
     ): Double {
 
-
         var sumaTotalParaDeducciones = 0.0
-
-//        if (cantidadHijosSinDiscapacidad > 0 ||
-//            cantidadHijosConDiscapacidad > 0 ) {
-//            sumaTotalParaDeducciones = totalAportes
-//        }
-
         sumaTotalParaDeducciones = totalAportes
 
 
