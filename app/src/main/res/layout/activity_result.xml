@@ -44,11 +44,20 @@
 
         <TextView
             android:id="@+id/tv_salario_liquido"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Salario liquido: $ 0"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+
 
         <TextView
             android:layout_width="match_parent"
@@ -57,35 +66,101 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/tv_jubilatorio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jubilatorio: 123" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
 
-        <TextView
-            android:id="@+id/tv_fonasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FONASA: 123" />
+                <TableRow
+                    android:background="#d3d3d3">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Conceptos"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/tv_frl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FRL: 123" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Monto"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"/>
+                </TableRow>
 
-        <TextView
-            android:id="@+id/tv_total_bps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Total BPS: 123"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textStyle="bold"/>
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jubilatorio"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_jubilatorio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0 $"
+                        android:layout_gravity="center"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="FONASA"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_fonasa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$ 0"
+                        android:layout_gravity="center"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="FRL"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_frl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$ 0"
+                        android:layout_gravity="center"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total BPS"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_total_bps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$ 0"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,11 +170,13 @@
             android:layout_marginBottom="10dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Detalle IRPF"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"/>
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -144,23 +221,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 BPC" />
+                        android:text="0 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7 BPC" />
+                        android:text="7 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0%" />
+                        android:text="0%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center" />
                 </TableRow>
 
                 <TableRow>
@@ -168,23 +249,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7 BPC" />
+                        android:text="7 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10 BPC" />
+                        android:text="10 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10%" />
+                        android:text="10%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -192,23 +277,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10 BPC" />
+                        android:text="10 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15 BPC" />
+                        android:text="15 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15%" />
+                        android:text="15%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -216,23 +305,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15 BPC" />
+                        android:text="15 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="30 BPC" />
+                        android:text="30 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24%" />
+                        android:text="24%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -240,23 +333,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="30 BPC" />
+                        android:text="30 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="50 BPC" />
+                        android:text="50 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="25%" />
+                        android:text="25%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -264,23 +361,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="50 BPC" />
+                        android:text="50 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="75 BPC" />
+                        android:text="75 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="27%" />
+                        android:text="27%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -288,23 +389,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="75 BPC" />
+                        android:text="75 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="115 BPC" />
+                        android:text="115 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="31%" />
+                        android:text="31%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -312,24 +417,28 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="115 BPC" />
+                        android:text="115 BPC"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="-" />
+                        android:text="-"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="36%" />
+                        android:text="36%"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_franja_irpf_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_gravity="center"/>
                 </TableRow>
 
             </TableLayout>
@@ -345,13 +454,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deducciones: $ 0"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/tv_tasa_deducciones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tasa Deducciones: 0 %" />
+                    android:text="Tasa Deducciones: 0 %"
+                    android:layout_marginBottom="5dp"/>
 
             </LinearLayout>
 
@@ -362,7 +473,9 @@
                 android:layout_height="wrap_content"
                 android:text="Total IRPF: $ 0"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
         </LinearLayout>
 
