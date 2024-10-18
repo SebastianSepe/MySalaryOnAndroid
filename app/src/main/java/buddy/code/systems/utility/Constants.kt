@@ -21,22 +21,16 @@ object Constants {
     )
 
     const val APORTES_JUBILATORIOS = 15
-
     const val TOPE_APORTE_JUBILATORIO = 236309
-
     const val APORTE_FONASA_BASICO = 3
     const val APORTE_FONASA_ADICIONAL = 1.5
     const val APORTE_FONASA_HIJOS = 1.5
     const val APORTE_FONASA_CONYUGE = 2
-
     const val APORTE_FRL = 0.001
-
     const val TASA_DEDUCCIONES_HASTA15BPC = 14
     const val TASA_DEDUCCIONES_DESDE15BPC = 8
-
     const val DEDUCCION_HIJO_SIN_DISCAPACIDAD = (20 * BPC) / 12
     const val DEDUCCION_HIJO_CON_DISCAPACIDAD = (40 * BPC) / 12
-
     const val ADICIONAL_FONDO_SOLIDARIDAD = ((5 / 4) * BPC) / 12;
 
 

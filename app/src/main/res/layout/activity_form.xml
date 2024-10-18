@@ -8,6 +8,12 @@
     android:background="@color/white"
     tools:context=".activities.form.FormActivity">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
 
     <LinearLayout
         android:id="@+id/ll_hasChildren"
@@ -337,6 +343,7 @@
             android:layout_marginBottom="5dp" />
 
     </LinearLayout>
+</ScrollView>
 
     <Button
         android:id="@+id/btn_calculate"
@@ -345,4 +352,6 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="20dp"
         android:text="Calcular" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

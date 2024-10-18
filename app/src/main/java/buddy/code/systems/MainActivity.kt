@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import buddy.code.systems.activities.form.FormActivity
@@ -47,8 +48,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToForm() {
         val intent = Intent(this, FormActivity::class.java)
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
+        startActivity(intent, options.toBundle())
+
+
     }
+
+
 
 }
 

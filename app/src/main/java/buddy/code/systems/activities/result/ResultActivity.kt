@@ -8,10 +8,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import buddy.code.systems.MainActivity
 import buddy.code.systems.R
+import buddy.code.systems.activities.form.FormActivity
 import buddy.code.systems.utility.Constants.BPC
 import buddy.code.systems.utility.Constants.TASA_DEDUCCIONES_DESDE15BPC
 import buddy.code.systems.utility.Constants.TASA_DEDUCCIONES_HASTA15BPC
@@ -121,8 +122,9 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, FormActivity::class.java)
         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
+        startActivity(intent, options.toBundle())
     }
 }

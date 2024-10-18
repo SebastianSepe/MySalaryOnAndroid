@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import buddy.code.systems.R
@@ -156,7 +157,7 @@ class FormActivity : AppCompatActivity() {
         deducciones: Int,
         irpfPorFranja: DoubleArray
     ) {
-        Intent(this, ResultActivity::class.java).apply {
+        val intent = Intent(this, ResultActivity::class.java).apply {
             putExtra("SALARY", salaryNominal)
             putExtra("BPS", aportesBPS)
             putExtra("FONASA", fonasa)
@@ -167,10 +168,13 @@ class FormActivity : AppCompatActivity() {
 
             // Agrega las flags para borrar el historial de pantallas previas
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-            startActivity(this)
         }
+
+        // Usar el intent configurado
+        val options = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
+        startActivity(intent, options.toBundle())
     }
+
 
     private fun calcularAportesBPS(salarioNominal: Double): Double {
         return (salarioNominal * APORTES_JUBILATORIOS) / 100
