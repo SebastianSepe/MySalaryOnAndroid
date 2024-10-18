@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
+    android:background="@color/white"
     tools:context=".activities.result.ResultActivity">
 
 
@@ -49,15 +50,15 @@
             android:text="Salario liquido: $ 0"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center">
-
-
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -104,7 +105,7 @@
                         android:id="@+id/tv_jubilatorio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0 $"
+                        android:text="$ 0"
                         android:layout_gravity="center"/>
                 </TableRow>
 
@@ -140,23 +141,28 @@
                         android:layout_gravity="center"/>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="Total BPS"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_total_bps"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
                         android:text="$ 0"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:layout_gravity="center"/>
+                        android:gravity="center"/>
                 </TableRow>
             </TableLayout>
 
@@ -166,7 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp">
 
             <TextView
@@ -199,21 +205,24 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:text="Hasta"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:text="Tasa"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:text="Impuesto"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:gravity="center"/>
                 </TableRow>
 
                 <TableRow>
@@ -447,7 +456,8 @@
                 android:id="@+id/ll_deducciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/tv_deducciones"

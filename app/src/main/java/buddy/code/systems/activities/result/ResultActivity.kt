@@ -1,7 +1,7 @@
 package buddy.code.systems.activities.result
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -10,11 +10,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import buddy.code.systems.MainActivity
 import buddy.code.systems.R
 import buddy.code.systems.utility.Constants.BPC
 import buddy.code.systems.utility.Constants.TASA_DEDUCCIONES_DESDE15BPC
 import buddy.code.systems.utility.Constants.TASA_DEDUCCIONES_HASTA15BPC
-import kotlin.math.min
 
 class ResultActivity : AppCompatActivity() {
 
@@ -79,7 +79,7 @@ class ResultActivity : AppCompatActivity() {
         if (deducciones == 0) {
             mLlDeducciones.visibility = View.GONE
         } else {
-            mTvTasaDeducciones.text = "Tasa deducciones: % ${tasaDeduccion.toInt()}"
+            mTvTasaDeducciones.text = "Tasa deducciones: % $tasaDeduccion"
             mTvDeducciones.text = "Deducciones: $ $deducciones"
         }
 
@@ -93,7 +93,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         // Configuración del botón de retorno
-        mButtonReturn.setOnClickListener { finish() }
+        mButtonReturn.setOnClickListener { goToMainActivity() }
     }
 
     private fun initViews() {
@@ -118,5 +118,11 @@ class ResultActivity : AppCompatActivity() {
             findViewById(R.id.tv_franja_irpf_7),
             findViewById(R.id.tv_franja_irpf_8)
         )
+    }
+
+    private fun goToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }
